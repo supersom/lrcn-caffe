@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-GPU_ID=0
+GPU_ID=-1
 DATA_DIR=./examples/coco_caption/h5_data/
 if [ ! -d $DATA_DIR ]; then
     echo "Data directory not found: $DATA_DIR"
@@ -12,3 +12,5 @@ fi
 ./build/tools/caffe train \
     -solver ./examples/coco_caption/lstm_lm_solver.prototxt \
     -gpu $GPU_ID
+
+

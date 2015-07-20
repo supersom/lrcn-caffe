@@ -7,14 +7,17 @@ random.seed(3)
 import re
 import sys
 
-sys.path.append('./examples/coco_caption/')
+CURRENT_DIR = 'home/som/code/lrcn/caffe/examples/coco_caption'
+COCO_PATH = '/home/som/code/lrcn/caffe/data/coco'
 
-COCO_PATH = './data/coco/tools'
+sys.path.append(CURRENT_DIR)
+
 COCO_TOOL_PATH = '%s/pycocotools' % COCO_PATH
 
 MAX_HASH = 100000
 
 sys.path.append(COCO_TOOL_PATH)
+
 from coco import COCO
 
 from hdf5_sequence_generator import SequenceGenerator, HDF5SequenceWriter
@@ -214,8 +217,9 @@ COCO_IMAGE_PATTERN = '%s/images/%%s2014' % COCO_PATH
 COCO_IMAGE_ID_PATTERN = 'COCO_%s2014_%%012d.jpg'
 
 BUFFER_SIZE = 100
-OUTPUT_DIR = './examples/coco_caption/h5_data/buffer_%d' % BUFFER_SIZE
-SPLITS_PATTERN = './data/coco/coco2014_cocoid.%s.txt'
+# OUTPUT_DIR = '%s/h5_data/buffer_%d' % (CURRENT_DIR, BUFFER_SIZE)
+OUTPUT_DIR = './h5_data/buffer_%d' % (BUFFER_SIZE)
+SPLITS_PATTERN = '%s/coco2014_cocoid.%%s.txt' % COCO_PATH
 OUTPUT_DIR_PATTERN = '%s/%%s_batches' % OUTPUT_DIR
 
 def preprocess_dataset(split_name, coco_split_name, batch_stream_length,
